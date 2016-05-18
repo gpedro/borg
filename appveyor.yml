@@ -19,8 +19,8 @@ install:
 
   # Add CYGWIN to PATH
   - "SET PATH=%CYGWIN_DIR%\\bin;%PATH%"
-  - "SET BORG_OPENSSL_PREFIX=%CYGWIN_DIR%"
-  - "SET BORG_LZ4_PREFIX=%CYGWIN_DIR%"
+  - "SET BORG_OPENSSL_PREFIX=%CYGWIN_DIR%\\usr"
+  - "SET BORG_LZ4_PREFIX=%CYGWIN_DIR%\\usr"
 
   - "python --version"
   - "virtualenv --version"
