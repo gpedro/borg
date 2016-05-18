@@ -20,7 +20,8 @@ install:
   - "virtualenv --version"
 
   # Installing Dependencies using nuget
-  - "apt-cyg install libopenssl openssl-devel liblz4_1 liblz4-devel"
+  - "C:\\cygwin64\\setup-x86_64.exe -q -P libopenssl -P openssl-devel"
+  - "C:\\cygwin64\\setup-x86_64.exe -q -m http://mirrors.kernel.org/sources.redhat.com/cygwinports/ -P liblz4_1 -P liblz4-devel"
 
   # Upgrade to the latest version of pip to avoid it displaying warnings
   # about it being out of date.
