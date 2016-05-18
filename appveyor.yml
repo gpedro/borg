@@ -28,7 +28,7 @@ install:
   # Log info
   - "python --version"
   - "pip --version"
-  - "virtualenv -v"
+  - "virtualenv --version"
 
   # Installing Dependencies using nuget
   - "%CYGWIN_DIR%\\setup-x86_64.exe -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel"
