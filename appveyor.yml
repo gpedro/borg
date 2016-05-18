@@ -26,14 +26,9 @@ install:
   # Log info
   - "python --version"
   - "pip --version"
-  - "virtualenv --version"
 
   # Installing Dependencies using nuget
   - "%CYGWIN_DIR%\\setup-x86_64.exe -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel"
-
-  # Create build virtualenv
-  - "virtualenv --clear .venv"
-  - ".venv\\Scripts\\activate.bat"
 
   # Install the build dependencies of the project. If some dependencies contain
   # compiled extensions and are not provided as pre-built wheel packages,
