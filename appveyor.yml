@@ -16,7 +16,7 @@ environment:
     - PYTHON_DIR: "C:\\Python35-x64"
       TOXENV: py35
 
-install:
+init:
   # Add Python to PATH
   - "SET PATH=%PYTHON_DIR%;%PYTHON_DIR%\\Scripts;%PATH%"
 
@@ -25,6 +25,7 @@ install:
   - "SET BORG_OPENSSL_PREFIX=%CYGWIN_DIR%\\usr"
   - "SET BORG_LZ4_PREFIX=%CYGWIN_DIR%\\usr"
 
+install:
   # Log info
   - "python --version"
   - "pip --version"
@@ -46,7 +47,8 @@ before_build:
   - "pip install --upgrade setuptools setuptools_scm"
   - "pip install -r requirements.d/development.txt"
 
-build: "pip install -e ."
+build_script:
+  - "pip install -e ."
 
 test_script:
   - "tox -e %TOXENV% -r"
