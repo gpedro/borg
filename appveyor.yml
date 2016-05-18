@@ -1,31 +1,25 @@
+cache:
+    - '%LOCALAPPDATA%\pip\Cache'
+
 environment:
   matrix:
-    - PYTHON: "C:\\Python34"
-      PYTHON_VERSION: "3.4.3"
-      PYTHON_ARCH: "32"
+    - PYTHON_DIR: "C:\\Python34"
       TOXENV: py34
 
-    - PYTHON: "C:\\Python35"
-      PYTHON_VERSION: "3.5.0"
-      PYTHON_ARCH: "32"
+    - PYTHON_DIR: "C:\\Python35"
       TOXENV: py35
 
 install:
-  # Install Python (from the official .msi of http://python.org) and pip when
-  # not already installed.
-  - ps: if (-not(Test-Path($env:PYTHON))) { & appveyor\install.ps1 }
+  # Add Python to PATH
+  - "SET PATH=%PYTHON_DIR%;%PYTHON_DIR%\\Scripts;%PATH%"
 
-  # Prepend newly installed Python to the PATH of this build (this cannot be
-  # done from inside the powershell script as it would require to restart
-  # the parent CMD process).
-  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
-
-  # Check that we have the expected version and architecture for Python
   - "python --version"
+  - "nuget --version"
+  - "virtualenv --version"
 
   # Installing Dependencies using nuget
-  - "nuget Install-Package lz4"
-  - "nuget Install-Package openssl"
+  - "nuget install lz4"
+  - "nuget install openssl"
 
   # Upgrade to the latest version of pip to avoid it displaying warnings
   # about it being out of date.
@@ -37,6 +31,14 @@ install:
   # target Python version and architecture
   - "pip install -r requirements.d/development.txt"
   - "pip install -e ."
+
+  # Create build virtualenv
+  - "virtualenv --clear %VENV_TEST_DIR%"
+  - "%VENV_TEST_DIR%\\Scripts\\activate.bat"
+
+  # Print Python info
+  - "python ci\\info_platform.py"
+  - "pip freeze"
 
 test_script:
   - "tox -r"
