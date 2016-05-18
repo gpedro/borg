@@ -48,7 +48,7 @@ before_build:
   - "pip install -r requirements.d/development.txt"
 
 build_script:
-  - ps: "pip install -e ."
+  - "python setup.py build"
 
 test_script:
   - "tox -e %TOXENV% -r"
