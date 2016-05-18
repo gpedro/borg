@@ -35,8 +35,14 @@ install:
 
 before_build:
   # Create build virtualenv
-  - "virtualenv --python=python3 --clear borg-env"
+  - "virtualenv --clear borg-env"
   - "borg-env\\Scripts\\activate.bat"
+
+  # Log info
+  - "python --version"
+  - "pip --version"
+  - "virtualenv --version"
+
   - "pip install --upgrade setuptools setuptools_scm"
   - "pip install -r requirements.d/development.txt"
 
