@@ -4,6 +4,8 @@ cache:
 platform:
   - x64
 
+clone_depth: 1
+
 environment:
   global:
     CYGWIN_DIR: 'C:\\cygwin64'
@@ -31,12 +33,14 @@ install:
   # Installing Dependencies using nuget
   - "%CYGWIN_DIR%\\setup-x86_64.exe -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel"
 
-build:
+before_build:
   # Create build virtualenv
   - "virtualenv --python=python3 --clear borg-env"
   - "borg-env\\Scripts\\activate.bat"
   - "pip install --upgrade setuptools setuptools_scm"
   - "pip install -r requirements.d/development.txt"
+
+build:
   - "pip install -e ."
 
 test_script:
