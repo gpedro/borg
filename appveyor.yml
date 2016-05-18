@@ -17,7 +17,6 @@ install:
   - "SET PATH=%PYTHON_DIR%;%PYTHON_DIR%\\Scripts;%PATH%"
 
   - "python --version"
-  - "nuget help"
   - "virtualenv --version"
 
   # Installing Dependencies using nuget
