@@ -1,12 +1,15 @@
 cache:
     - '%LOCALAPPDATA%\pip\Cache'
 
+platform:
+  - x64
+
 environment:
   matrix:
-    - PYTHON_DIR: "C:\\Python34"
+    - PYTHON_DIR: "C:\\Python34-x64"
       TOXENV: py34
 
-    - PYTHON_DIR: "C:\\Python35"
+    - PYTHON_DIR: "C:\\Python35-x64"
       TOXENV: py35
 
 install:
@@ -14,7 +17,7 @@ install:
   - "SET PATH=%PYTHON_DIR%;%PYTHON_DIR%\\Scripts;%PATH%"
 
   - "python --version"
-  - "nuget help"
+  - "nuget version"
   - "virtualenv --version"
 
   # Installing Dependencies using nuget
