@@ -5,23 +5,26 @@ platform:
   - x64
 
 environment:
+  CYGWIN_DIR: 'C:\\cygwin64'
   matrix:
     - PYTHON_DIR: "C:\\Python34-x64"
-      TOXENV: py34
+    - TOXENV: py34
 
     - PYTHON_DIR: "C:\\Python35-x64"
-      TOXENV: py35
+    - TOXENV: py35
 
 install:
   # Add Python to PATH
   - "SET PATH=%PYTHON_DIR%;%PYTHON_DIR%\\Scripts;%PATH%"
 
+  # Add CYGWIN to PATH
+  - "SET PATH=%CYGWIN_DIR%\\bin;%PATH%"
+
   - "python --version"
   - "virtualenv --version"
 
   # Installing Dependencies using nuget
-  - "C:\\cygwin64\\setup-x86_64.exe -q -P libopenssl -P openssl-devel"
-  - "C:\\cygwin64\\setup-x86_64.exe -q -m http://mirrors.kernel.org/sources.redhat.com/cygwinports/ -P liblz4_1 -P liblz4-devel"
+  - "%CYGWIN_DIR%\\setup-x86_64.exe -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel"
 
   # Upgrade to the latest version of pip to avoid it displaying warnings
   # about it being out of date.
