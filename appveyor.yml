@@ -27,11 +27,12 @@ install:
 
   # Installing Dependencies using nuget
   - "%CYGWIN_DIR%\\setup-x86_64.exe -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel"
-  - ps: 'ls $env:CYGWIN_DIR'
 
-  # Upgrade to the latest version of pip to avoid it displaying warnings
-  # about it being out of date.
-  - "pip install --disable-pip-version-check --user --upgrade pip"
+  # Updating Environment
+  - python -m pip install -U setuptools
+  - python -m pip install -U pip
+  - python -m pip install -U wheel
+  - python -m pip install -U tox
 
   # Install the build dependencies of the project. If some dependencies contain
   # compiled extensions and are not provided as pre-built wheel packages,
