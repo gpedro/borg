@@ -25,6 +25,7 @@ install:
 
   # Installing Dependencies using nuget
   - "%CYGWIN_DIR%\\setup-x86_64.exe -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel"
+  - 'dir %CYGWIN_DIR%'
 
   # Upgrade to the latest version of pip to avoid it displaying warnings
   # about it being out of date.
