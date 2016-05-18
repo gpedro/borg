@@ -6,7 +6,7 @@ platform:
 
 environment:
   global:
-    - CYGWIN_DIR: 'C:\\cygwin64'
+    CYGWIN_DIR: 'C:\\cygwin64'
   matrix:
     - PYTHON_DIR: "C:\\Python34-x64"
       TOXENV: py34
