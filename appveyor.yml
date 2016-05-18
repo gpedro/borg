@@ -1,5 +1,5 @@
 cache:
-    - '%LOCALAPPDATA%\pip\Cache'
+  - '%LOCALAPPDATA%\pip\Cache'
 
 platform:
   - x64
@@ -19,13 +19,15 @@ install:
 
   # Add CYGWIN to PATH
   - "SET PATH=%CYGWIN_DIR%\\bin;%PATH%"
+  - "SET BORG_OPENSSL_PREFIX=%CYGWIN_DIR%"
+  - "SET BORG_LZ4_PREFIX=%CYGWIN_DIR%"
 
   - "python --version"
   - "virtualenv --version"
 
   # Installing Dependencies using nuget
   - "%CYGWIN_DIR%\\setup-x86_64.exe -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel"
-  - 'dir %CYGWIN_DIR%'
+  - ps: 'ls %CYGWIN_DIR%'
 
   # Upgrade to the latest version of pip to avoid it displaying warnings
   # about it being out of date.
