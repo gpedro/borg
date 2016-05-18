@@ -22,7 +22,7 @@ install:
 
   # Installing Dependencies using nuget
   - "nuget install lz4"
-  - "nuget install openssl"
+  - "nuget install openssl -Version 1.0.2"
 
   # Upgrade to the latest version of pip to avoid it displaying warnings
   # about it being out of date.
