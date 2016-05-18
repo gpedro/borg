@@ -5,7 +5,8 @@ platform:
   - x64
 
 environment:
-  CYGWIN_DIR: 'C:\\cygwin64'
+  global:
+    - CYGWIN_DIR: 'C:\\cygwin64'
   matrix:
     - PYTHON_DIR: "C:\\Python34-x64"
       TOXENV: py34
@@ -31,8 +32,8 @@ install:
   - "%CYGWIN_DIR%\\setup-x86_64.exe -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel"
 
   # Create build virtualenv
-  - "virtualenv --clear %VENV_TEST_DIR%"
-  - "%VENV_TEST_DIR%\\Scripts\\activate.bat"
+  - "virtualenv --clear .venv"
+  - ".venv\\Scripts\\activate.bat"
 
   # Install the build dependencies of the project. If some dependencies contain
   # compiled extensions and are not provided as pre-built wheel packages,
