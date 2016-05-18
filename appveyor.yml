@@ -46,8 +46,9 @@ install:
   - "%VENV_TEST_DIR%\\Scripts\\activate.bat"
 
   # Print Python info
-  - "python ci\\info_platform.py"
   - "pip freeze"
+
+build: false
 
 test_script:
   - "tox -r"
