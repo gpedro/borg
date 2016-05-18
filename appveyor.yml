@@ -41,14 +41,7 @@ install:
   # target Python version and architecture
   - "pip install -r requirements.d/development.txt"
 
-  # Updating Environment
-  - pip install --upgrade setuptools
-  - pip install --upgrade setuptools_scm
-  - pip install --upgrade pip
-  - pip install --upgrade wheel
-  - pip install --upgrade tox
-
-  # Install gg
+  # Install Eggs
   - "pip install -e ."
 
   # Print Python info
