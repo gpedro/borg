@@ -21,8 +21,7 @@ install:
   - "virtualenv --version"
 
   # Installing Dependencies using nuget
-  - "nuget install lz4"
-  - "nuget install openssl -Version 1.0.2"
+  - "apt-cyg install libopenssl openssl-devel liblz4_1 liblz4-devel"
 
   # Upgrade to the latest version of pip to avoid it displaying warnings
   # about it being out of date.
