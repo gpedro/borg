@@ -63,7 +63,7 @@ install:
   - 'SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%'
 
   # Add CYGWIN to PATH
-  - ps: if($env:PYTHON_ARCH -eq '64') { $env:CYGWIN_DIR='C:\cygwin64'; $env:CYGWIN_SETUP=$env:CYGWIN_DIR + '\setup-x86_64.exe' } else { $env:CYGWIN_SETUP=$env:CYGWIN_DIR + '\setup-x86' }
+  - ps: if($env:PYTHON_ARCH -eq '64') { $env:CYGWIN_DIR='C:\cygwin64'; $env:CYGWIN_SETUP=$env:CYGWIN_DIR + '\setup-x86_64.exe' } else { $env:CYGWIN_SETUP=$env:CYGWIN_DIR + '\setup-x86.exe' }
   - 'SET PATH=%CYGWIN_DIR%\bin;%PATH%'
   - 'SET BORG_OPENSSL_PREFIX=%CYGWIN_DIR%\usr'
   - 'SET BORG_LZ4_PREFIX=%CYGWIN_DIR%\usr'
@@ -73,7 +73,7 @@ install:
   - "python -c \"import struct; print(struct.calcsize('P') * 8)\""
 
   # Installing Dependencies
-  - '%CYGWIN_DIR%\setup-x86_64.exe -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel'
+  - '%CYGWIN_SETUP% -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel'
 
   # Upgrade to the latest version of pip to avoid it displaying warnings
   # about it being out of date.
