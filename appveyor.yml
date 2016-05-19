@@ -9,7 +9,6 @@ clone_depth: 1
 environment:
   global:
     CYGWIN_DIR: 'C:\\cygwin64'
-    : 'dev'
   matrix:
     - PYTHON_DIR: "C:\\Python34-x64"
       TOXENV: py34
@@ -28,6 +27,7 @@ init:
 
   # Set SetupConfig Version
   - "SET SETUPTOOLS_SCM_PRETEND_VERSION=%APPVEYOR_BUILD_NUMBER%"
+
 install:
   # Log info
   - "python --version"
