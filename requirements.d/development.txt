@@ -3,4 +3,4 @@ tox
 pytest
 pytest-cov
 pytest-benchmark
-Cython<0.22
+Cython<0.21
