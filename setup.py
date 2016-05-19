@@ -304,7 +304,7 @@ setup(
     description='Deduplicated, encrypted, authenticated and compressed backups',
     long_description=long_description,
     license='BSD',
-    platforms=['Linux', 'MacOS X', 'FreeBSD', 'OpenBSD', 'NetBSD', ],
+    platforms=['Linux', 'MacOS X', 'FreeBSD', 'OpenBSD', 'NetBSD', 'Windows'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
@@ -331,7 +331,7 @@ setup(
     },
     cmdclass=cmdclass,
     ext_modules=ext_modules,
-    setup_requires=['setuptools_scm>=1.7'],
+    setup_requires=['setuptools_scm==1.7.0'],
     install_requires=install_requires,
     extras_require=extras_require,
 )
