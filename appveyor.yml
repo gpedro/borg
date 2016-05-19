@@ -9,7 +9,7 @@ clone_depth: 1
 environment:
   global:
     CYGWIN_DIR: 'C:\\cygwin64'
-    SETUPTOOLS_SCM_PRETEND_VERSION: 'dev'
+    : 'dev'
   matrix:
     - PYTHON_DIR: "C:\\Python34-x64"
       TOXENV: py34
@@ -26,6 +26,8 @@ init:
   - "SET BORG_OPENSSL_PREFIX=%CYGWIN_DIR%\\usr"
   - "SET BORG_LZ4_PREFIX=%CYGWIN_DIR%\\usr"
 
+  # Set SetupConfig Version
+  - "SET SETUPTOOLS_SCM_PRETEND_VERSION=%APPVEYOR_BUILD_NUMBER%"
 install:
   # Log info
   - "python --version"
@@ -36,17 +38,9 @@ install:
   - "%CYGWIN_DIR%\\setup-x86_64.exe -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel"
 
 before_build:
-  # Test git
-  - 'ls -a .'
-
   # Create build virtualenv
   - "virtualenv --clear borg-env"
   - "borg-env\\Scripts\\activate.bat"
-
-  # Log info
-  - "python --version"
-  - "pip --version"
-  - "virtualenv --version"
 
   - "pip install --upgrade setuptools setuptools_scm"
   - "pip install -r requirements.d/development.txt"
