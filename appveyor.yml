@@ -9,12 +9,13 @@ clone_depth: 1
 environment:
   global:
     CYGWIN_DIR: 'C:\\cygwin64'
+    SETUPTOOLS_SCM_PRETEND_VERSION: 'dev'
   matrix:
     - PYTHON_DIR: "C:\\Python34-x64"
-      TOXENV: py34
+    TOXENV: py34
 
     - PYTHON_DIR: "C:\\Python35-x64"
-      TOXENV: py35
+    TOXENV: py35
 
 init:
   # Add Python to PATH
@@ -36,7 +37,7 @@ install:
 
 before_build:
   # Test git
-  - 'ls .'
+  - 'ls -a .'
 
   # Create build virtualenv
   - "virtualenv --clear borg-env"
