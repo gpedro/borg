@@ -1,6 +1,8 @@
 cache:
   - '%LOCALAPPDATA%\pip\Cache'
 
+os: Visual Studio 2015
+
 platform:
   - x64
 
