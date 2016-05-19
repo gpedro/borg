@@ -48,7 +48,8 @@ before_build:
   - 'pip install --upgrade setuptools setuptools_scm'
   - 'pip install -r requirements.d/development.txt'
 
-build: false
+build_script:
+  - 'pip install -e .'
 
 test_script:
   - 'tox -e %TOXENV% -r'
