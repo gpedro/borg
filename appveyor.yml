@@ -69,7 +69,7 @@ install:
 
   # Check that we have the expected version and architecture for Python
   - 'python --version'
-  - 'python -c \'import struct; print(struct.calcsize('P') * 8)\''
+  - 'python -c "import struct; print(struct.calcsize('P') * 8)"'
 
   # Installing Dependencies
   - '%CYGWIN_DIR%\setup-x86_64.exe -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel -P fakeroot'
