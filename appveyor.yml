@@ -63,7 +63,7 @@ install:
   - 'SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%'
 
   # Add CYGWIN to PATH
-  - ps: if($env:PYTHON_ARCH -eq '64') $env:CYGWIN_DIR='C:\cygwin64'
+  - ps: if($env:PYTHON_ARCH -eq '64') { $env:CYGWIN_DIR='C:\cygwin64' }
   - 'SET PATH=%CYGWIN_DIR%\bin;%PATH%'
   - 'SET BORG_OPENSSL_PREFIX=%CYGWIN_DIR%\usr'
   - 'SET BORG_LZ4_PREFIX=%CYGWIN_DIR%\usr'
