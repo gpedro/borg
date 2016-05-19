@@ -1,8 +1,6 @@
 cache:
   - '%LOCALAPPDATA%\pip\Cache'
 
-os: Visual Studio 2015
-
 platform:
   - x64
 
@@ -11,7 +9,6 @@ clone_depth: 1
 environment:
   global:
     CYGWIN_DIR: 'C:\\cygwin64'
-    DISTUTILS_USE_SDK: '1'
   matrix:
     - PYTHON_DIR: 'C:\\Python34-x64'
       TOXENV: py34
@@ -28,9 +25,6 @@ init:
   - 'SET BORG_OPENSSL_PREFIX=%CYGWIN_DIR%\\usr'
   - 'SET BORG_LZ4_PREFIX=%CYGWIN_DIR%\\usr'
 
-  # Set SetupConfig Version
-  - 'SET SETUPTOOLS_SCM_PRETEND_VERSION=%APPVEYOR_BUILD_NUMBER%'
-
 install:
   # Log info
   - 'python --version'
@@ -38,7 +32,7 @@ install:
   - 'virtualenv --version'
 
   # Installing Dependencies using nuget
-  - '%CYGWIN_DIR%\\setup-x86_64.exe -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel'
+  - '%CYGWIN_DIR%\\setup-x86_64.exe -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel -P fakeroot'
 
 before_build:
   # Create build virtualenv
