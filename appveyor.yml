@@ -1,10 +1,13 @@
-cache:
-  - '%LOCALAPPDATA%\pip\Cache'
-
+os: Windows Server 2012 R2
 platform:
   - x64
 
 clone_depth: 1
+
+version: "{build}"
+
+cache:
+  - '%LOCALAPPDATA%\pip\Cache'
 
 environment:
   global:
