@@ -35,6 +35,9 @@ install:
   - "%CYGWIN_DIR%\\setup-x86_64.exe -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel"
 
 before_build:
+  # Test git
+  - 'ls .'
+
   # Create build virtualenv
   - "virtualenv --clear borg-env"
   - "borg-env\\Scripts\\activate.bat"
@@ -48,7 +51,7 @@ before_build:
   - "pip install -r requirements.d/development.txt"
 
 build_script:
-  - "python setup.py build"
+  - "pip install -e ."
 
 test_script:
   - "tox -e %TOXENV% -r"
