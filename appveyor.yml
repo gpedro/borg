@@ -11,44 +11,45 @@ clone_depth: 1
 environment:
   global:
     CYGWIN_DIR: 'C:\\cygwin64'
+    DISTUTILS_USE_SDK: '1'
   matrix:
-    - PYTHON_DIR: "C:\\Python34-x64"
+    - PYTHON_DIR: 'C:\\Python34-x64'
       TOXENV: py34
 
-    - PYTHON_DIR: "C:\\Python35-x64"
+    - PYTHON_DIR: 'C:\\Python35-x64'
       TOXENV: py35
 
 init:
   # Add Python to PATH
-  - "SET PATH=%PYTHON_DIR%;%PYTHON_DIR%\\Scripts;%PATH%"
+  - 'SET PATH=%PYTHON_DIR%;%PYTHON_DIR%\\Scripts;%PATH%'
 
   # Add CYGWIN to PATH
-  - "SET PATH=%CYGWIN_DIR%\\bin;%PATH%"
-  - "SET BORG_OPENSSL_PREFIX=%CYGWIN_DIR%\\usr"
-  - "SET BORG_LZ4_PREFIX=%CYGWIN_DIR%\\usr"
+  - 'SET PATH=%CYGWIN_DIR%\\bin;%PATH%'
+  - 'SET BORG_OPENSSL_PREFIX=%CYGWIN_DIR%\\usr'
+  - 'SET BORG_LZ4_PREFIX=%CYGWIN_DIR%\\usr'
 
   # Set SetupConfig Version
-  - "SET SETUPTOOLS_SCM_PRETEND_VERSION=%APPVEYOR_BUILD_NUMBER%"
+  - 'SET SETUPTOOLS_SCM_PRETEND_VERSION=%APPVEYOR_BUILD_NUMBER%'
 
 install:
   # Log info
-  - "python --version"
-  - "pip --version"
-  - "virtualenv --version"
+  - 'python --version'
+  - 'pip --version'
+  - 'virtualenv --version'
 
   # Installing Dependencies using nuget
-  - "%CYGWIN_DIR%\\setup-x86_64.exe -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel"
+  - '%CYGWIN_DIR%\\setup-x86_64.exe -q -P libopenssl -P openssl-devel -P liblz4_1 -P liblz4-devel'
 
 before_build:
   # Create build virtualenv
-  - "virtualenv --clear borg-env"
-  - "borg-env\\Scripts\\activate.bat"
+  - 'virtualenv --clear borg-env'
+  - 'borg-env\\Scripts\\activate.bat'
 
-  - "pip install --upgrade setuptools setuptools_scm"
-  - "pip install -r requirements.d/development.txt"
+  - 'pip install --upgrade setuptools setuptools_scm'
+  - 'pip install -r requirements.d/development.txt'
 
 build_script:
-  - "pip install -e ."
+  - 'pip install -e .'
 
 test_script:
-  - "tox -e %TOXENV% -r"
+  - 'tox -e %TOXENV% -r'
