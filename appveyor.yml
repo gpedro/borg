@@ -46,7 +46,7 @@ before_build:
   - 'virtualenv --clear borg-env'
   - 'borg-env\Scripts\activate.bat'
 
-  - 'pip install -r requirements.ddevelopment.txt'
+  - 'pip install -r requirements.development.txt'
 
 build_script:
   - 'pip install -e .'
