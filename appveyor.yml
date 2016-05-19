@@ -12,10 +12,10 @@ environment:
     SETUPTOOLS_SCM_PRETEND_VERSION: 'dev'
   matrix:
     - PYTHON_DIR: "C:\\Python34-x64"
-    TOXENV: py34
+      TOXENV: py34
 
     - PYTHON_DIR: "C:\\Python35-x64"
-    TOXENV: py35
+      TOXENV: py35
 
 init:
   # Add Python to PATH
