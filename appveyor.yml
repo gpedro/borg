@@ -4,8 +4,7 @@ platform:
 
 clone_depth: 1
 
-cache:
-  - '%LOCALAPPDATA%\pip\Cache'
+cache: '%LOCALAPPDATA%\pip\Cache'
 
 environment:
   global:
