@@ -1,4 +1,4 @@
-image: Previous Visual Studio 2013
+os: Previous Visual Studio 2013
 
 environment:
   global:
