@@ -1,5 +1,3 @@
-os: Previous Visual Studio 2013
-
 environment:
   global:
     CYGWIN_DIR: 'C:\cygwin'
@@ -89,7 +87,7 @@ install:
 
 build_script:
   # Build the compiled extension
-  - 'pip install -e .'
+  - '%CMD_IN_ENV% pip install -e .'
 
 test_script:
   # Run the project tests
