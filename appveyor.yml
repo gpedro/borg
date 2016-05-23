@@ -1,3 +1,5 @@
+image: Previous Visual Studio 2013
+
 environment:
   global:
     CYGWIN_DIR: 'C:\cygwin'
